@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { CursosService } from './cursos.service';
+import {CursosService} from './cursos.service';
 
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
-  styleUrls: ['./cursos.component.scss']
+  styleUrls: ['./cursos.component.scss'],
+  providers: [CursosService]
 })
 export class CursosComponent implements OnInit {
 
   cursos: string[] = [];
+
   // cursoService!: CursosService;
 
   constructor(private cursoServices: CursosService) {
@@ -21,4 +23,8 @@ export class CursosComponent implements OnInit {
     this.cursos = this.cursoServices.getCursos();
   }
 
+  addCuroso(curso: string): string {
+    this.cursoServices.addCurso(curso);
+    return '';
+  }
 }
